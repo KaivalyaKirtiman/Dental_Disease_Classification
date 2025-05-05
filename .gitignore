@@ -1,3 +1,13 @@
+venv/
+
+models/*.h5
+models/*.keras
+
+*.png
+
+logs/
+__pycache__/
+*.pyc
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

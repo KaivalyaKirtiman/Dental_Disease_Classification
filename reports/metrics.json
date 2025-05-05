@@ -1,0 +1,12 @@
+{
+    "test_accuracy": 0.8363047242164612,
+    "test_loss": 0.4360978603363037,
+    "class_indices": {
+        "calculus": 0,
+        "caries": 1,
+        "gingivitis": 2,
+        "hypodontia": 3,
+        "mouth_ulcer": 4,
+        "tooth_discoloration": 5
+    }
+}
