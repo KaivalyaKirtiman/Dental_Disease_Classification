@@ -9,7 +9,7 @@ import os
 import tensorflow as tf
 
 def plot_training_history(history):
-    """Plot training and validation metrics history."""
+    
     plt.figure(figsize=(12, 5))
     
     # Plot accuracy
@@ -21,7 +21,7 @@ def plot_training_history(history):
     plt.xlabel('Epoch')
     plt.legend()
     
-    # Plot loss
+  
     plt.subplot(1, 2, 2)
     plt.plot(history.history['loss'], label='Train Loss')
     plt.plot(history.history['val_loss'], label='Validation Loss')
@@ -38,23 +38,22 @@ def evaluate_model(model, test_gen, class_indices):
     """Evaluate model and generate comprehensive metrics."""
     os.makedirs("reports", exist_ok=True)
     
-    # 1. Basic Evaluation
+   
     print("\nEvaluating on test set...")
     test_loss, test_acc = model.evaluate(test_gen)
     print(f"Test Accuracy: {test_acc:.4f}")
     print(f"Test Loss: {test_loss:.4f}")
     
-    # 2. Predictions
+    
     y_pred = model.predict(test_gen)
     y_pred_classes = np.argmax(y_pred, axis=1)
     y_true = test_gen.classes
     
-    # 3. Classification Report
     print("\nClassification Report:")
     print(classification_report(y_true, y_pred_classes, 
                               target_names=Config.CLASS_NAMES))
     
-    # 4. Confusion Matrix
+   
     plt.figure(figsize=(10, 8))
     cm = confusion_matrix(y_true, y_pred_classes)
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
@@ -66,8 +65,8 @@ def evaluate_model(model, test_gen, class_indices):
     plt.savefig(os.path.join("reports", "confusion_matrix.png"))
     plt.close()
     
-    # 5. ROC Curve (for multi-class)
-    if len(Config.CLASS_NAMES) <= 10:  # Only plot ROC for reasonable number of classes
+    
+    if len(Config.CLASS_NAMES) <= 10:  
         plt.figure(figsize=(10, 8))
         for i, class_name in enumerate(Config.CLASS_NAMES):
             fpr, tpr, _ = roc_curve((y_true == i).astype(int), y_pred[:, i])
@@ -84,7 +83,7 @@ def evaluate_model(model, test_gen, class_indices):
         plt.savefig(os.path.join("reports", "roc_curves.png"))
         plt.close()
     
-    # 6. Precision-Recall Curve
+   
     plt.figure(figsize=(10, 8))
     for i, class_name in enumerate(Config.CLASS_NAMES):
         precision, recall, _ = precision_recall_curve((y_true == i).astype(int), y_pred[:, i])
@@ -97,7 +96,7 @@ def evaluate_model(model, test_gen, class_indices):
     plt.savefig(os.path.join("reports", "precision_recall.png"))
     plt.close()
     
-    # 7. Save metrics to file
+    
     metrics = {
         'test_accuracy': float(test_acc),
         'test_loss': float(test_loss),

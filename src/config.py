@@ -19,7 +19,7 @@ class Config:
     # Model saving (using new .keras format)
     MODEL_SAVE_PATH = "models/resnet50v2_oral_disease.keras"
     
-    # Class names (must match your folder names exactly)
+    # Class names 
     CLASS_NAMES = [
         "Calculus", 
         "Caries", 

@@ -5,7 +5,7 @@ import numpy as np
 import os
 from pathlib import Path
 
-# Fix paths for your structure
+
 MODEL_PATH = Path(__file__).parent.parent / 'models' / 'resnet50v2_oral_disease.keras'
 
 @st.cache_resource
@@ -23,7 +23,7 @@ def preprocess(image):
     img = img.resize((224, 224))
     return np.expand_dims(np.array(img)/255.0, axis=0)
 
-# App UI
+
 st.title("Dental Disease Classifier")
 upload = st.file_uploader("Upload tooth image:", type=["jpg","png","jpeg"])
 

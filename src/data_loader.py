@@ -3,7 +3,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from .config import Config
 
 def create_data_generators():
-    """Create optimized data generators with augmentation."""
+    
     train_datagen = ImageDataGenerator(
         rescale=1./255,
         rotation_range=20,

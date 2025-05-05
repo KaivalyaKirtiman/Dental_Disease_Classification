@@ -6,7 +6,7 @@ import os
 import datetime
 
 def train_model():
-    """Train the model with efficient resource handling."""
+    
     os.makedirs("models", exist_ok=True)
     os.makedirs("logs", exist_ok=True)
     
